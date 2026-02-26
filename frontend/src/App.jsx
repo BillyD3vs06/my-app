@@ -21,7 +21,7 @@ function App() {
     <LDtheme/>
     <div>
       <SearchBar/>
-      <TaskList/>
+      <TaskList></TaskList>
     </div>
     <Add/>
     <Sort/>
