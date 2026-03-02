@@ -12,20 +12,23 @@ import Add from "./Components/Add"
 import LogOut from "./Components/LogOut"
 
 function App() {
-  const [count, setCount] = useState(0)
+  
 
   return (
     <>
     <Title/>
     <ShowAU/>
     <LDtheme/>
-    <div>
+    <div className="border border-black rounded-md px-4 py-2 mt-5" >
+      <div>
       <SearchBar/>
-      <TaskList></TaskList>
+      <TaskList/>
     </div>
+    </div>
+    
     <Add/>
-    <Sort/>
     <TaskNumber/>
+    <Sort/>
     <LogMessage/>
     <LogOut/>
     
