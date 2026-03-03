@@ -15,7 +15,7 @@ function App() {
   
 
   return (
-    <>
+    <div>
     <Title/>
     <ShowAU/>
     <LDtheme/>
@@ -25,15 +25,22 @@ function App() {
       <TaskList/>
     </div>
     </div>
+    <div className="flex items-center justify-between mt-2">
+      <div className="flex gap-4">
+        <Add/>
+      </div>
+      <TaskNumber/>
+    </div>
     
-    <Add/>
-    <TaskNumber/>
+
+    
+
     <Sort/>
     <LogMessage/>
     <LogOut/>
     
     
-    </>
+    </div>
     
   );
 }

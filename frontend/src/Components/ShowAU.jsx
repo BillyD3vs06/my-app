@@ -9,9 +9,9 @@ function ShowAU() {
     
 
     return (
-        <div className="w-65 mt-2">
+        <div className="w-full mt-2">
             <p className="font-bold text-left">
-                {isAdmin ? "Welcome Administrator" : "Welcome User"}
+                Welcome [name], { isAdmin ? "Administrator" : "User" }
             </p>
         </div>
     );
