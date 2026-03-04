@@ -10,12 +10,19 @@ import TaskNumber from "./Components/TaskNumber"
 import Sort from "./Components/Sort"
 import Add from "./Components/Add"
 import LogOut from "./Components/LogOut"
+import { BrowserRouter, Routes, Route, Link, Outlet } from "react-router-dom";
+import SignIn from './Components/SignIn'
+
+
 
 function App() {
   
 
   return (
-    <div>
+    
+    
+  <BrowserRouter>
+  
     <Title/>
     <ShowAU/>
     <LDtheme/>
@@ -25,6 +32,7 @@ function App() {
       <TaskList/>
     </div>
     </div>
+
     <div className="flex items-center justify-between mt-2">
       <div className="flex gap-4">
         <Add/>
@@ -32,16 +40,19 @@ function App() {
       <TaskNumber/>
     </div>
     
-
-    
-
     <Sort/>
     <LogMessage/>
-    <LogOut/>
+
+    <Link to="/SignIn"> <LogOut/> </Link>  {" "}
+
+    <Routes>
+      <Route path='/SignIn' element={<SignIn/>}/> 
+      </Routes>    
+      
     
     
-    </div>
-    
+  </BrowserRouter>
+
   );
 }
 
