@@ -2,7 +2,7 @@ import { useState } from "react";
 
 function ShowAU() {
 
-    let [isAdmin, identifyRole] = useState(true);
+    let [isAdmin] = useState(true);
 
     // isAdmin = false;
     

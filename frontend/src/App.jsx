@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './App.css'
 import Title from "./Components/Title"
 import ShowAU from "./Components/ShowAU"
@@ -10,8 +9,10 @@ import TaskNumber from "./Components/TaskNumber"
 import Sort from "./Components/Sort"
 import Add from "./Components/Add"
 import LogOut from "./Components/LogOut"
-import { BrowserRouter, Routes, Route, Link, Outlet } from "react-router-dom";
 import SignIn from './Components/SignIn'
+import TaskForm from './Components/TaskForm'
+
+import { BrowserRouter, Routes, Route, Link, Outlet } from "react-router-dom";
 
 
 
@@ -35,18 +36,21 @@ function App() {
 
     <div className="flex items-center justify-between mt-2">
       <div className="flex gap-4">
-        <Add/>
+        <Link to="/TaskForm"> <Add/> </Link>
       </div>
       <TaskNumber/>
     </div>
-    
     <Sort/>
     <LogMessage/>
 
     <Link to="/SignIn"> <LogOut/> </Link>  {" "}
+      
 
     <Routes>
+
       <Route path='/SignIn' element={<SignIn/>}/> 
+      <Route path='/TaskForm' element={<TaskForm/>} />
+
       </Routes>    
       
     
