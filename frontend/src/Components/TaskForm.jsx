@@ -2,13 +2,20 @@ import { useState } from "react";
 
 function TaskForm() {
 
+    let today = new Date();
+    const day = String(today.getDate()).padStart(2, "0");
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const year = String(today.getFullYear());
+    today = `${year}-${month}-${day}`;
+
     const [formData, setFormData] = useState({
         taskTitle: "",
         taskDescription: "",
         assignTo: "",
         assignedBy: "",
-        createdAt: "",
-        dueDate: ""
+        createdAt: today,
+        dueDate: "",
+        status: "Start whenever"
     });
 
     const handleSubmit = (e) => {
@@ -28,8 +35,9 @@ function TaskForm() {
             taskDescription: "",
             assignTo: "",
             assignedBy: "",
-            createdAt: "",
-            dueDate: ""
+            createdAt: today,
+            dueDate: "",
+            status: "Start whenever"
         });
     };
 
@@ -52,6 +60,7 @@ function TaskForm() {
                         value={formData.taskTitle}
                         onChange={handleChange}
                         className="border border-gray-400 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+                        placeholder="Create a task"
                         required
                     />
                 </div>
@@ -66,6 +75,7 @@ function TaskForm() {
                     onChange={handleChange}
                     rows="4"
                     className="border border-gray-400 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black resize-none"
+                    placeholder="Essential details that will makes task clearer"
                     required
                 />
             </div>
@@ -80,6 +90,7 @@ function TaskForm() {
                     value={formData.assignTo}
                     onChange={handleChange}
                     className="border border-gray-400 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+                    placeholder="John Carpenter"
                     required
                 />
             </div>
@@ -96,7 +107,21 @@ function TaskForm() {
                     value={formData.assignedBy}
                     onChange={handleChange}
                     className="border border-gray-400 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+                    placeholder="R.J. MacReady"
                     required
+                />
+            </div>
+
+            <div className="flex flex-col">
+                <label className="font-semibold mb-1">Status</label>
+                <input  
+                    type="text"
+                    name="status"
+                    value={formData.status}
+                    onChange={handleChange}
+                    className="border border-gray-400 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+                    required
+
                 />
             </div>
 
@@ -105,15 +130,13 @@ function TaskForm() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
             <div className="flex flex-col">
-                <label className="font-semibold mb-1">Created Date</label>
-                <input 
-                    type="date"
+                <label className="font-semibold mb-1">Created At</label>
+                <div 
                     name="createdAt"
-                    value={formData.createdAt}
-                    onChange={handleChange}
                     className="border border-gray-400 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
-                    required
-                />
+                >
+                    {today}
+                </div>
             </div>
             
             <div className="flex flex-col">
