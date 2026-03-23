@@ -11,6 +11,7 @@ import Add from "./Components/Add"
 import LogOut from "./Components/LogOut"
 import SignIn from './Components/SignIn'
 import TaskForm from './Components/TaskForm'
+import SignUp from './Components/SignUp'
 
 import { BrowserRouter, Routes, Route, Link, Outlet } from "react-router-dom";
 
@@ -20,9 +21,9 @@ function App() {
   
 
   return (
+    <BrowserRouter>
     
     
-  <BrowserRouter>
   
     <Title/>
     <ShowAU/>
@@ -44,19 +45,21 @@ function App() {
     <LogMessage/>
 
     <Link to="/SignIn"> <LogOut/> </Link>  {" "}
+    
       
 
     <Routes>
 
       <Route path='/SignIn' element={<SignIn/>}/> 
-      <Route path='/TaskForm' element={<TaskForm/>} />
+      <Route path='/TaskForm' element={<TaskForm/>}/>
+      <Route path='/SignUp' element={<SignUp/>}/>
 
       </Routes>    
       
     
     
-  </BrowserRouter>
-
+  
+    </BrowserRouter>
   );
 }
 
