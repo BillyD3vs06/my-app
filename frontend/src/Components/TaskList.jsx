@@ -1,29 +1,28 @@
-function TaskList() {
-    return (
-        <div>
-            <ul>
-                <li className="border border-black rounded-md px-4 py-2 m-4 cursor-pointer bg-gray-200 hover:bg-gray-400">
-                    <button className="cursor-pointer">MockTask</button>
-                    </li>
+import React, { Component } from "react";
 
-                <li className="border border-black rounded-md px-4 py-2 m-4 cursor-pointer bg-gray-200 hover:bg-gray-400">
-                    <button className="cursor-pointer">MockTask</button>
-                    </li>
+class TaskList extends Component {
+    render() {
+        return (
+            <div className="mt-6">
+                <h2 className="text-xl font-bold mb-4">Tasks</h2>
 
-                <li className="border border-black rounded-md px-4 py-2 m-4 cursor-pointer bg-gray-200 hover:bg-gray-400">
-                    <button className="cursor-pointer">MockTask</button>
-                    </li>
-
-                <li className="border border-black rounded-md px-4 py-2 m-4 cursor-pointer bg-gray-200 hover:bg-gray-400">
-                    <button className="cursor-pointer">MockTask</button>
-                    </li>
-
-                <li className="border border-black rounded-md px-4 py-2 m-4 cursor-pointer bg-gray-200 hover:bg-gray-400">
-                    <button className="cursor-pointer">MockTask</button>
-                    </li>
-            </ul>
-        </div>
-    );
+                {this.props.tasks.map((task, index) => (
+                    <div
+                        key={index}
+                        className="border p-4 rounded mb-3 shadow"
+                    >
+                        <h3 className="font-bold">{task.taskTitle}</h3>
+                        <p>{task.taskDescription}</p>
+                        <p>Assigned to: {task.assignTo}</p>
+                        <p>Assigned by: {task.assignedBy}</p>
+                        <p>Created at: {task.createdAt}</p>
+                        <p>Due date: {task.dueDate}</p>
+                        <p>Status: {task.status}</p>
+                    </div>
+                ))}
+            </div>
+        );
+    }
 }
 
 export default TaskList;

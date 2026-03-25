@@ -7,8 +7,8 @@ function SignUp() {
     const [role, setRole] = useState("User");
     const [error, setError] = useState("");
 
-    const handleSignUp = (e) => {
-        e.preventDefault();
+    const handleSignUp = () => {
+        
 
         if (password !== confirmPassword) {
             setError("The passwords do not match!");

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function SignIn() {
   return (
     <>
@@ -69,9 +71,9 @@ function SignIn() {
 
           <p className="mt-10 text-center text-sm/6 text-gray-500">
             Don't have an account?{' '}
-            <a href="/SignUp" className="font-semibold text-indigo-600 hover:text-indigo-500">
+            <Link to="/SignUpPage" className="font-semibold text-indigo-600 hover:text-indigo-500">
                 Create one here
-            </a>
+            </Link>
           </p>
         </div>
       </div>
