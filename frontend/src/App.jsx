@@ -18,11 +18,8 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 
 
-
+// Child
 function HomePage( {tasks} ) {
-
-  
-
   return(
     <>
 
@@ -43,23 +40,25 @@ function HomePage( {tasks} ) {
             <Link to="/TaskPage"><Add/> </Link>
           </div>
         </div>
-        <TaskNumber/>
+        <TaskNumber tasks={tasks.length} />
       </div>
 
       <Sort/>
-      <LogMessage/>
+      
       <Link to="/SignInPage"> {<LogOut/>} </Link>
 
     </>
   );
 }
 
+// Child
 function TaskPage({ onCreateTask }) {
   return(
      <CreateTaskWithNavigation onCreateTask={onCreateTask} />
   );
 }
 
+// Child
 function SignInPage() {
   return(
 
@@ -70,6 +69,7 @@ function SignInPage() {
 
 }
 
+// Child
 function SignUpPage() {
   return(
 
@@ -79,7 +79,7 @@ function SignUpPage() {
 }
 
 
-
+//Parent
 function App() {
 
   const [tasks, setTasks] = useState([]);

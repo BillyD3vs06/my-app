@@ -13,11 +13,8 @@ class TaskList extends Component {
                     >
                         <h3 className="font-bold">{task.taskTitle}</h3>
                         <p>{task.taskDescription}</p>
-                        <p>Assigned to: {task.assignTo}</p>
-                        <p>Assigned by: {task.assignedBy}</p>
-                        <p>Created at: {task.createdAt}</p>
-                        <p>Due date: {task.dueDate}</p>
-                        <p>Status: {task.status}</p>
+                        <p>Assigned by: {task.assignedBy} Status: {task.status}</p>
+                        <p>Created at: {task.createdAt} Due sate: {task.dueDate}</p>
                     </div>
                 ))}
             </div>
