@@ -3,8 +3,8 @@ import React, { Component } from "react";
 class TaskList extends Component {
     render() {
         return (
-            <div className="mt-6">
-                <h2 className="text-xl font-bold mb-4">Tasks</h2>
+            <div className=" bg-white border border-slate-200 shadow-sm rounded-md">
+                <h2 className="text-xl font-bold mb-4"></h2>
 
                 {this.props.tasks.map((task, index) => (
                     <div

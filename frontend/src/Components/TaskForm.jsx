@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 
 class TaskForm extends React.Component {
@@ -64,7 +63,7 @@ class TaskForm extends React.Component {
 
     render() {
         return (
-            <div className="w-full max-w-2xl mx-auto mt-10 p-6 border border-black rounded-lg shadow-md"> 
+            <div className="w-full max-w-2xl mx-auto mt-10 p-6 border border-black rounded-lg shadow-md "> 
                 <h2 className="text-2xl font-bold mb-6 text-center">
                     Create New Task
                 </h2>
@@ -80,7 +79,7 @@ class TaskForm extends React.Component {
                             name="taskTitle"
                             value={this.state.formData.taskTitle}
                             onChange={this.handleChange}
-                            className="border border-gray-400 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+                            className="border border-slate-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                             placeholder="Create a task"
                             required
                         />
@@ -95,8 +94,8 @@ class TaskForm extends React.Component {
                             value={this.state.formData.taskDescription}
                             onChange={this.handleChange}
                             rows="4"
-                            className="border border-gray-400 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black resize-none"
-                            placeholder="Essential details that will makes task clearer"
+                            className="border border-slate-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+                            placeholder="Essential details that will make the task clearer"
                             required
                         />
                     </div>
@@ -110,7 +109,7 @@ class TaskForm extends React.Component {
                         name="assignTo"
                         value={this.state.formData.assignTo}
                         onChange={this.handleChange}
-                        className="border border-gray-400 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+                        className="border border-slate-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         placeholder="John Carpenter"
                         required
                     />
@@ -127,7 +126,7 @@ class TaskForm extends React.Component {
                         name="assignedBy"
                         value={this.state.formData.assignedBy}
                         onChange={this.handleChange}
-                        className="border border-gray-400 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+                        className="border border-slate-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         placeholder="R.J. MacReady"
                         required
                     />
@@ -140,7 +139,7 @@ class TaskForm extends React.Component {
                         name="status"
                         value={this.state.formData.status}
                         onChange={this.handleChange}
-                        className="border border-gray-400 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+                        className="border border-slate-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         required
 
                     />
@@ -154,7 +153,7 @@ class TaskForm extends React.Component {
                     <label className="font-semibold mb-1">Created At</label>
                     <div 
                         name="createdAt"
-                        className="border border-gray-400 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+                        className="border border-slate-200 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
                     >
                         {this.today}
                     </div>
@@ -167,7 +166,7 @@ class TaskForm extends React.Component {
                         name="dueDate"
                         value={this.state.formData.dueDate}
                         onChange={this.handleChange}
-                        className="border border-gray-400 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+                        className="border border-slate-200 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
                         required
                     />
 
@@ -181,7 +180,7 @@ class TaskForm extends React.Component {
                     <button
                         type="button"
                         onClick={this.handleAbort}
-                        className="cursor-pointer w-full border border-black font-bold py-2 rounded-md transition-transform duration-200 hover:scale-105"
+                        className="cursor-pointer w-full border border-slate-200 text-slate-700 hover:bg-slate-100 font-bold py-2 rounded-md transition-transform duration-200 hover:scale-105 "
                     >
                         Abort
                     </button>
@@ -190,7 +189,7 @@ class TaskForm extends React.Component {
                 
                 <button 
                     type="button"
-                    className="cursor-pointer w-full border bg-black text-white font-bold py-2 rounded-md transition-transform duration-200 hover:scale-105"
+                    className="cursor-pointer w-full border bg-blue-700 text-white hover:bg-blue-800 font-bold py-2 rounded-md transition-transform duration-200 hover:scale-105"
                     onClick={this.handleSubmit}
                 >
                     Create Task

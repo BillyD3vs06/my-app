@@ -25,7 +25,7 @@ function HomePage( {tasks} ) {
 
       <Title />
       <ShowAU />
-      <LDtheme />
+      
 
       <div className="border border-black rounded-md px-4 py-2 mt-5">
         <div>
@@ -43,8 +43,8 @@ function HomePage( {tasks} ) {
         <TaskNumber tasks={tasks.length} />
       </div>
 
-      <Sort/>
-      
+      <Sort tasks={tasks}/>
+      <LogMessage/>
       <Link to="/SignInPage"> {<LogOut/>} </Link>
 
     </>
@@ -90,16 +90,18 @@ function App() {
   };
 
   return (
-    <BrowserRouter>
+    <div className="bg-slate-50 min-h-screen">
+      <BrowserRouter>
     
-      <Routes>
-        <Route path='/' element={<HomePage tasks={tasks} />} />
-        <Route path='/TaskPage' element={<TaskPage onCreateTask={createTask} />} />
-        <Route path='/SignInPage' element={<SignInPage />} />
-        <Route path='/SignUpPage' element={<SignUpPage/>} />
-      </Routes>
+        <Routes>
+          <Route path='/' element={<HomePage tasks={tasks} />} />
+          <Route path='/TaskPage' element={<TaskPage onCreateTask={createTask} />} />
+          <Route path='/SignInPage' element={<SignInPage />} />
+          <Route path='/SignUpPage' element={<SignUpPage/>} />
+        </Routes>
 
-    </BrowserRouter>
+      </BrowserRouter>
+    </div>
   );
 }
 
