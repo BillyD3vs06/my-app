@@ -29,7 +29,7 @@ function HomePage( {tasks} ) {
 
       <div className="border border-black rounded-md px-4 py-2 mt-5">
         <div>
-          <SearchBar />
+          <SearchBar/>
           <TaskList tasks={tasks} />
         </div>
       </div>
@@ -45,7 +45,7 @@ function HomePage( {tasks} ) {
 
       <Sort tasks={tasks}/>
       <LogMessage/>
-      <Link to="/SignInPage"> {<LogOut/>} </Link>
+      <LogOut/>
 
     </>
   );
