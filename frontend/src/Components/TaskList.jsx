@@ -3,9 +3,47 @@ import React, { Component } from "react";
 class TaskList extends Component {
 
     state = {
-        selectedTask: null
+        selectedTask: null,
+        touchStartY: 0,
+        touchEndY: 0
     };
 
+    // Phone UX
+    handleTouchStart = (e) => {
+        this.setState({ touchStartY: e.touches[0].clientY });
+    };
+
+    handleTouchMove = (e) => {
+        this.setState({ touchEndY: e.touches[0].clientY });
+    };
+
+    handleTouchEnd = () => {
+        const { touchStartY, touchEndY } = this.state;
+
+        const distance = touchEndY - touchStartY;
+
+        // Swipe down 100 pixels or more closes task card
+        if (distance > 100) {
+            this.closeTask();
+        }
+    };
+
+    // Locks scroll when task card is open
+    componentDidUpdate(prevProps, prevState) {
+        if (!prevState.selectedTask && this.state.selectedTask) {
+            document.body.style.overflow = "hidden";
+        }
+
+        if (prevState.selectedTask && !this.state.selectedTask) {
+            document.body.style.overflow = "auto";
+        }
+    }
+
+    componentWillUnmount() {
+        document.body.style.overflow = "auto";
+    }
+
+    // Open/Close task cards
     openTask = (task) => {
         this.setState({ selectedTask: task });
     };
@@ -44,9 +82,18 @@ class TaskList extends Component {
 
             
             {this.state.selectedTask && (
-                <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
+                <div 
+                    className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50"
+                    onClick={this.closeTask}
+                >
                     
-                    <div className="bg-white rounded-lg p-6 w-full max-w-md shadow-lg relative">
+                    <div 
+                        onClick={(e) => e.stopPropagation()}
+                        onTouchStart={this.handleTouchStart}
+                        onTouchMove={this.handleTouchMove}
+                        onTouchEnd={this.handleTouchEnd}
+                        className="bg-white rounded-lg p-6 w-full max-w-md shadow-lg relative"
+                    >
                         
                         <button
                             onClick={this.closeTask}
