@@ -1,7 +1,18 @@
 function TaskNumber({tasks}) {
     return (
-        <span className="inline-flex items-center whitespace-nowrap text-blue-700 mb-2">
-            Number of tasks to complete: {tasks}
+        <span className="
+            inline-flex
+            items-center
+            whitespace-nowrap
+            text-blue-700
+            text-sm sm:text-base
+        ">
+            <span className="font-medium">
+                Tasks:
+            </span>
+            <span className="ml-2">
+                {tasks}
+            </span>
         </span>
     );
 }

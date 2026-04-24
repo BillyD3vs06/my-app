@@ -3,7 +3,6 @@ import Title from "./Components/Title"
 import ShowAU from "./Components/ShowAU"
 import SearchBar from "./Components/SearchBar"
 import TaskList from "./Components/TaskList"
-import LDtheme from "./Components/LDtheme"
 import LogMessage from "./Components/LogMessage"
 import TaskNumber from "./Components/TaskNumber"
 import Sort from "./Components/Sort"
@@ -21,61 +20,59 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 // Child
 function HomePage( {tasks} ) {
   return(
-    <>
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-4">
 
       <Title />
       <ShowAU />
       
-
-      <div className="border border-black rounded-md px-4 py-2 mt-5">
-        <div>
-          <SearchBar/>
-          <TaskList tasks={tasks} />
-        </div>
+      {/* Task container */}
+      <div className="border border-blue-700 rounded-md px-3 sm:px-4 py-3 mt-5">
+        <SearchBar/>
+        <TaskList tasks={tasks} />
       </div>
 
-      <div className="flex items-center justify-between mt-2">
+      {/* Actions and Task count */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mt-4 gap-3">
+
         <div className="flex gap-4">
-          <div>
-            <Link to="/TaskPage"><Add/> </Link>
-          </div>
+          <Link to="/TaskPage">
+            <Add/> 
+          </Link>
         </div>
+
         <TaskNumber tasks={tasks.length} />
       </div>
 
-      <Sort tasks={tasks}/>
-      <LogMessage/>
-      <LogOut/>
+      <div className="mt-4">
+        <Sort tasks={tasks}/>
+      </div>
 
-    </>
+      <div className="mt-2">
+        <LogMessage/>
+      </div>
+
+      <div className="mt-4">
+        <LogOut/>
+      </div>
+      
+
+    </div>
   );
 }
 
 // Child
 function TaskPage({ onCreateTask }) {
-  return(
-     <CreateTaskWithNavigation onCreateTask={onCreateTask} />
-  );
+  return <CreateTaskWithNavigation onCreateTask={onCreateTask} />;
 }
 
 // Child
 function SignInPage() {
-  return(
-
-    <SignIn/>
-
-  );
-  
-
+  return <SignIn/>;
 }
 
 // Child
 function SignUpPage() {
-  return(
-
-    <SignUp/>
-
-  );
+  return <SignUp/>;
 }
 
 
@@ -91,16 +88,16 @@ function App() {
 
   return (
     <div className="bg-slate-50 min-h-screen">
+
       <BrowserRouter>
-    
         <Routes>
           <Route path='/' element={<HomePage tasks={tasks} />} />
           <Route path='/TaskPage' element={<TaskPage onCreateTask={createTask} />} />
           <Route path='/SignInPage' element={<SignInPage />} />
           <Route path='/SignUpPage' element={<SignUpPage/>} />
         </Routes>
-
       </BrowserRouter>
+      
     </div>
   );
 }
