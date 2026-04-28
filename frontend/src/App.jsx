@@ -18,7 +18,7 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 
 // Child
-function HomePage( {tasks} ) {
+function HomePage( {tasks, setTasks } ) {
   return(
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-4">
 
@@ -44,7 +44,7 @@ function HomePage( {tasks} ) {
       </div>
 
       <div className="mt-4">
-        <Sort tasks={tasks}/>
+        <Sort tasks={tasks} setTasks={setTasks}/>
       </div>
 
       <div className="mt-2">
@@ -91,7 +91,7 @@ function App() {
 
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<HomePage tasks={tasks} />} />
+          <Route path='/' element={<HomePage tasks={tasks} setTasks={setTasks} />} />
           <Route path='/TaskPage' element={<TaskPage onCreateTask={createTask} />} />
           <Route path='/SignInPage' element={<SignInPage />} />
           <Route path='/SignUpPage' element={<SignUpPage/>} />
