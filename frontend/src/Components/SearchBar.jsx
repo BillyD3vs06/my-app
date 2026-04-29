@@ -1,9 +1,11 @@
-function SearchBar() {
+function SearchBar({ searchTerm, setSearchTerm }) {
     return (
         <div className="w-full">
             <input 
                 type="text" 
-                placeholder="Search for a task by its title" 
+                placeholder="Search for a task by its title, description or delegator" 
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
                 className="
                     w-full
                     border border-blue-500

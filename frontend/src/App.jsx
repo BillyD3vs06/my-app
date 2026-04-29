@@ -18,7 +18,14 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 
 // Child
-function HomePage( {tasks, setTasks } ) {
+function HomePage({tasks, setTasks, searchTerm, setSearchTerm }) {
+
+  const filteredTasks = tasks.filter(task => 
+    (task.taskTitle || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (task.taskDescription || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (task.assignedBy || "").toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return(
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-4">
 
@@ -27,8 +34,11 @@ function HomePage( {tasks, setTasks } ) {
       
       {/* Task container */}
       <div className="border border-blue-700 rounded-md px-3 sm:px-4 py-3 mt-5">
-        <SearchBar/>
-        <TaskList tasks={tasks} />
+        <SearchBar 
+          searchTerm={searchTerm} 
+          setSearchTerm={setSearchTerm} 
+        />
+        <TaskList tasks={filteredTasks} />
       </div>
 
       {/* Actions and Task count */}
@@ -80,6 +90,7 @@ function SignUpPage() {
 function App() {
 
   const [tasks, setTasks] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   
 
   const createTask = (newTask) => {
@@ -91,7 +102,16 @@ function App() {
 
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<HomePage tasks={tasks} setTasks={setTasks} />} />
+          <Route 
+            path='/'
+            element={ <HomePage 
+              tasks={tasks} 
+              setTasks={setTasks} 
+              searchTerm={searchTerm} 
+              setSearchTerm={setSearchTerm}
+            /> } 
+          />
+
           <Route path='/TaskPage' element={<TaskPage onCreateTask={createTask} />} />
           <Route path='/SignInPage' element={<SignInPage />} />
           <Route path='/SignUpPage' element={<SignUpPage/>} />
