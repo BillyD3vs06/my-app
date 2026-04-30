@@ -18,7 +18,7 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 
 // Child
-function HomePage({tasks, setTasks, searchTerm, setSearchTerm }) {
+function HomePage({tasks, prevNumTasks, setTasks, searchTerm, setSearchTerm }) {
 
   const filteredTasks = tasks.filter(task => 
     (task.taskTitle || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -58,7 +58,7 @@ function HomePage({tasks, setTasks, searchTerm, setSearchTerm }) {
       </div>
 
       <div className="mt-2">
-        <LogMessage/>
+        <LogMessage tasks={tasks.length} prevNumTasks={prevNumTasks}/>
       </div>
 
       <div className="mt-4">
@@ -92,6 +92,7 @@ function App() {
   const [tasks, setTasks] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   
+  const prevNumTasks = tasks.length;
 
   const createTask = (newTask) => {
     setTasks([...tasks, newTask]);
@@ -106,6 +107,7 @@ function App() {
             path='/'
             element={ <HomePage 
               tasks={tasks} 
+              prevNumTasks={prevNumTasks}
               setTasks={setTasks} 
               searchTerm={searchTerm} 
               setSearchTerm={setSearchTerm}
