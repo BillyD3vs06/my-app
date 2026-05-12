@@ -18,7 +18,7 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 
 // Child
-function HomePage({tasks, prevNumTasks, setTasks, searchTerm, setSearchTerm }) {
+function HomePage({tasks, prevNumTasks, setTasks, searchTerm, setSearchTerm, editTask}) {
 
   const filteredTasks = tasks.filter(task => 
     (task.taskTitle || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -38,7 +38,7 @@ function HomePage({tasks, prevNumTasks, setTasks, searchTerm, setSearchTerm }) {
           searchTerm={searchTerm} 
           setSearchTerm={setSearchTerm} 
         />
-        <TaskList tasks={filteredTasks} />
+        <TaskList tasks={filteredTasks} editTask={editTask}/>
       </div>
 
       {/* Actions and Task count */}
@@ -98,6 +98,17 @@ function App() {
     setTasks([...tasks, newTask]);
   };
 
+  const editTask = (updatedTask) => {
+    setTasks(prevTasks => 
+      prevTasks.map(task => 
+        task.createdAt === updatedTask.createdAt
+        ? updatedTask
+        : task
+
+      )
+    );
+  };
+
   return (
     <div className="bg-slate-50 min-h-screen">
 
@@ -111,6 +122,7 @@ function App() {
               setTasks={setTasks} 
               searchTerm={searchTerm} 
               setSearchTerm={setSearchTerm}
+              editTask={editTask}
             /> } 
           />
 

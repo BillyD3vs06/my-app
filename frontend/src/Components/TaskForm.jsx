@@ -5,12 +5,18 @@ class TaskForm extends React.Component {
     constructor(props) {
         super(props);
 
-        let today = new Date();
-        const day = String(today.getDate()).padStart(2, "0");
-        const month = String(today.getMonth() + 1).padStart(2, "0");
-        const year = String(today.getFullYear());
+        const now = new Date();
 
-        today = `${year}-${month}-${day}`;
+        const year = String(now.getFullYear());
+        const month = String(now.getMonth() + 1).padStart(2, "0");
+        const day = String(now.getDate()).padStart(2, "0");
+
+        const hours = String(now.getHours()).padStart(2, "0");
+        const minutes = String(now.getMinutes()).padStart(2, "0");
+        const seconds = String(now.getSeconds()).padStart(2, "0");
+        const milliseconds = String(now.getSeconds()).padStart(3, "0");
+
+        const today = `${year}-${month}-${day}_${hours}:${minutes}:${seconds}:${milliseconds}`;
 
         this.today = today;
 

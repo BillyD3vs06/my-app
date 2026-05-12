@@ -7,6 +7,36 @@ class TaskList extends Component {
         touchStartY: 0,
         touchEndY: 0
     };
+    
+    taskState = {
+        selectedTask: null,
+        editingTask: null
+    };
+
+    openEditTask = (task) => {
+        this.setState({
+            editingTask: {...task}
+        });
+    };
+
+    handleEditChange = (e) => {
+        const {name, value} = e.target;
+
+        this.setState(prevState => ({
+            editingTask: {
+                ...prevState.editingTask,
+                [name]: value
+            }
+        }));
+    };
+
+    saveEditedTask = () => {
+        this.props.editTask(this.taskState.editingTask);
+
+        this.setState({
+            editingTask: null
+        });
+    };
 
     // Phone UX
     handleTouchStart = (e) => {
@@ -117,6 +147,25 @@ class TaskList extends Component {
                             <p><span className="font-medium">Assigned by:</span> {this.state.selectedTask.assignedBy}</p>
                             <p><span className="font-medium">Assigned to:</span> {this.state.selectedTask.assignTo}</p>
                         </div>
+
+                        <button
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                this.openEditTask();
+                            }}
+                            className="
+                                mt-4
+                                bg-yellow-500
+                                hover:bg-yellow-600
+                                text-white
+                                px-3 py-1
+                                rounded-md
+                                text-sm
+                                font-medium
+                            "
+                        >
+                            Edit
+                        </button>
 
                     </div>
                 </div>
