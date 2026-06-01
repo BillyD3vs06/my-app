@@ -13,8 +13,8 @@ function SignUp() {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
 
-    const [phoneNumber, setPhoneNumber] = useState(""); 
-    const [role, setRole] = useState("User");
+    const [phoneNumber, setPhoneNumber] = useState("");
+    const [role, setRole] = useState("user");
 
     const [acceptTerCon, setAcceptTerCon] = useState(false);
 
@@ -36,7 +36,7 @@ function SignUp() {
             return;
         }
 
-        if (!acceptedTerCon) {
+        if (!acceptTerCon) {
             setError("You must accept terms");
             return;
         }
@@ -44,14 +44,16 @@ function SignUp() {
         setError("");
         
         const userData = {
-            firstName,
-            lastName,
-            employeeId,
-            userName,
-            workEmail,
-            password,
-            phoneNumber,
-            role
+            firstName: "",
+            lastName: "",
+            employeeId: "",
+            userName: "",
+            workEmail: "",
+            password: "",
+            confirmPassword: "",
+            phoneNumber: "",
+            role: "user",
+            acceptTerCon: false
         };
 
         console.log("userData");
@@ -75,45 +77,21 @@ function SignUp() {
 
         return (
             <div
-                className="
-                min-h-screen
-                bg-gray-100
-                flex
-                items-center
-                justify-center
-                px-4
-                py-8
-                "
+                className="min-h-screen bg-gray-100 flex items-center justify-center px-4 py-8"
             >
 
                 <div
-                    className="
-                    w-full
-                    max-w-2xl
-                    bg-white
-                    shadow-lg
-                    rounded-xl
-                    p-6
-                    md:p-8
-                    "
+                    className="w-full max-w-2xl bg-white shadow-lg rounded-xl p-6 md:p-8"
                 >
 
                     <h1
-                        className="
-                        text-3xl
-                        font-bold
-                        text-gray-800
-                        mb-2
-                        "
+                        className="text-3xl font-bold text-gray-800 mb-2"
                     >
                         Create Account
                     </h1>
 
                     <p
-                        className="
-                        text-gray-500
-                        mb-6
-                        "
+                        className="text-gray-500 mb-6"
                     >
                         Create your employee account
                     </p>
@@ -123,46 +101,15 @@ function SignUp() {
                         className="space-y-5"
                     >
                         <div
-                            className="
-                            grid
-                            grid-cols-1
-                            md:grid-cols-2
-                            gap-4
-                            "
+                            className="grid grid-cols-1 md:grid-cols-2 gap-4"
                         >
                             <input
                                 label="First Name"
+                                type="text"
                                 value={firstName}
                                 setter={setFirstName}
                                 placeHolder="Indiana"
-                                className="
-                                w-full
-                                p-3
-                                rounded-xl
-
-                                bg-blue-50
-                                text-slate-800
-                                placeholder:text-slate-400
-
-                                border
-                                border-blue-200
-
-                                shadow-sm
-
-                                transition-all
-                                duration-200
-
-                                focus:outline-none
-                                focus:border-blue-600
-                                focus:ring-2
-                                focus:ring-blue-300
-
-                                hover:border-blue-400
-                                hover:bg-blue-100
-
-                                disabled:bg-slate-100
-                                disabled:text-slate-400
-                                "
+                                className="w-full p-3 rounded-xl bg-blue-50 text-slate-800 placeholder:text-slate-400 border border-blue-200 shadow-sm transition-all duration-200 focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-300 hover:border-blue-400 hover:bg-blue-100 disabled:bg-slate-100 disabled:text-slate-400"
                             />
 
                             <input
@@ -170,31 +117,14 @@ function SignUp() {
                                 value={lastName}
                                 setter={setLastName}
                                 placeholder="Jones"
-                                className="
-                                w-full
-                                p-3
-                                rounded-xl
-
-                                bg-blue-50
-                                text-slate-800
-                                placeholder:text-slate-400
-
-                                border
-                                border-blue-200
-
-                                shadow-sm
-
-                                transition-all
+                                className="w-full p-3 rounded-xl bg-blue-50 text-slate-800 placeholder:text-slate-400 border border-blue-200 shadow-sm transition-all
                                 duration-200
-
                                 focus:outline-none
                                 focus:border-blue-600
                                 focus:ring-2
                                 focus:ring-blue-300
-
                                 hover:border-blue-400
                                 hover:bg-blue-100
-
                                 disabled:bg-slate-100
                                 disabled:text-slate-400
                                 "
@@ -205,31 +135,24 @@ function SignUp() {
                                 value={employeeId}
                                 setter={setEmployeeId}
                                 placeholder="EMP-102"
-                                className="
-                                w-full
-                                p-3
-                                rounded-xl
-
-                                bg-blue-50
+                                className=" 
+                                w-full 
+                                p-3 
+                                rounded-xl 
+                                bg-blue-50 
                                 text-slate-800
                                 placeholder:text-slate-400
-
                                 border
                                 border-blue-200
-
                                 shadow-sm
-
                                 transition-all
                                 duration-200
-
                                 focus:outline-none
                                 focus:border-blue-600
                                 focus:ring-2
                                 focus:ring-blue-300
-
                                 hover:border-blue-400
                                 hover:bg-blue-100
-
                                 disabled:bg-slate-100
                                 disabled:text-slate-400
                                 "

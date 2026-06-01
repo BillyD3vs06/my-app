@@ -24,7 +24,7 @@ class TaskForm extends React.Component {
             formData: {
                 taskTitle: "",
                 taskDescription: "",
-                assignTo: "", 
+                assignTo: "",
                 assignedBy: "",
                 createdAt: today,
                 dueDate: "",
