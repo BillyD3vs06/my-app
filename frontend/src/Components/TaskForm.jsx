@@ -28,7 +28,7 @@ class TaskForm extends React.Component {
                 assignedBy: "",
                 createdAt: today,
                 dueDate: "",
-                status: "Start whenever" 
+                status: "pending" 
             }
         }
         
