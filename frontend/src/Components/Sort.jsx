@@ -10,14 +10,12 @@ function Sort({setTasks, tasks}) {
         const newTimes = times + 1;
         setTimes(newTimes);
 
-        let remainder = newTimes % 4;
+        let remainder = newTimes % 2;
 
         const sortMsg = [
 
             "Tasks sorted by the most urgent task first", 
             "Tasks sorted alphabetically by its titles",
-            "Tasks sorted alphabetically by its delegator's name",
-            "Tasks sorted by the oldest first"
         ];
 
         let sortedTasks = [...tasks];
@@ -29,22 +27,6 @@ function Sort({setTasks, tasks}) {
                 console.log(sortMsg[1]);
                 sortedTasks.sort((a, b) => 
                     (a.taskTitle || "").localeCompare(b.taskTitle || "")
-                );
-                break;
-
-            // Sorting alphabetically by admin
-            case 2:
-                console.log(sortMsg[2]);
-                sortedTasks.sort((a, b) =>
-                    (a.assignedBy || "").localeCompare(b.assignedBy || "")
-                );
-                break;
-
-            // Sorting by oldest task at the top
-            case 3:
-                console.log(sortMsg[3]);
-                sortedTasks.sort((a, b) => 
-                    new Date(a.createdAt) - new Date(b.createdAt)
                 );
                 break;
         

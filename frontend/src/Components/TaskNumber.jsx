@@ -8,7 +8,7 @@ function TaskNumber({tasks}) {
             text-sm sm:text-base
         ">
             <span className="font-medium">
-                Tasks:
+                Tasks to complete:
             </span>
             <span className="ml-2">
                 {tasks}

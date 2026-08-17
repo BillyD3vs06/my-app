@@ -14,9 +14,8 @@ class TaskForm extends React.Component {
         const hours = String(now.getHours()).padStart(2, "0");
         const minutes = String(now.getMinutes()).padStart(2, "0");
         const seconds = String(now.getSeconds()).padStart(2, "0");
-        const milliseconds = String(now.getSeconds()).padStart(3, "0");
 
-        const today = `${year}-${month}-${day}_${hours}:${minutes}:${seconds}:${milliseconds}`;
+        const today = `${year}-${month}-${day}_${hours}:${minutes}:${seconds}`;
 
         this.today = today;
 
@@ -69,7 +68,7 @@ class TaskForm extends React.Component {
 
     render() {
         return (
-            <div className="w-full max-w-2xl mx-auto mt-10 p-6 border border-black rounded-lg shadow-md "> 
+            <div className="w-full max-w-2xl mx-auto mt-10 p-6 border border-blue-700 rounded-lg shadow-md "> 
                 <h2 className="text-2xl font-bold mb-6 text-center">
                     Create New Task
                 </h2>

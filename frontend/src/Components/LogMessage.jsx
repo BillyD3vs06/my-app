@@ -9,10 +9,10 @@ function LogMessage({ tasks, prevNumTasks }) {
   const historyMessages = [];
   const messageOptions = [
 
-    "Uppgift tillagd",
-    "Uppgift borttagen",
-    "Uppgift uppdaterad",
-    "Deadline passerat"
+    "Task Added",
+    "Task Removed",
+    "Task Updated",
+    "Deadline passed"
 
   ];
 
